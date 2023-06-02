@@ -31,11 +31,6 @@ export default function ChatLine( id :any ) {
         id != "bot" ? "float-right clear-both" : "float-left clear-both"
       }
     >
-<>{id.id}</>
-<>{FlashCard?.CreatedAt.toDateString()||<>ggtgg</>}</>
-
-
-
 
 <div onClick={toggleState}>
       {isFront ? <FrontContent /> : <BackContent />}
