@@ -47,9 +47,15 @@ export default function ChatLine( id :any ) {
   );
 }
 function FrontContent() {
-  return <h1>Front</h1>;
+  return    <div className="card p-4 rounded-lg shadow-lg">
+      {/* Add the content of the card here */}
+      <h1>Front</h1>
+    </div>;
 }
 
 function BackContent() {
-  return <h1>Back</h1>;
+  return    <div className="card p-4 rounded-lg shadow-lg">
+      {/* Add the content of the card here */}
+      <h1>Back</h1>
+    </div>;
 }
