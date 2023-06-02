@@ -20,7 +20,7 @@ export default function ChatLine( id :any ) {
 
 <div className="card h-60vh w-2/3 h-2/3 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500" onClick={toggleState}>
       {isFront ? <FrontContent /> : <BackContent />}
-      {FlashCard?.points}
+     
     </div>
 
 
