@@ -28,7 +28,7 @@ export default function ChatLine( id :any ) {
   return (
 
 
-<div className="card sm:h-screen h-60vh w-2/3 h-2/3 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500" onClick={toggleState}>
+<div className="card h-60vh w-2/3 h-2/3 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500" onClick={toggleState}>
       {isFront ? <FrontContent /> : <BackContent />}
     </div>
 
@@ -37,14 +37,14 @@ export default function ChatLine( id :any ) {
   );
 }
 function FrontContent() {
-  return    <div className="card w-full h-full p-16 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500">
+  return    <div className="card w-full h-60vh p-16 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500">
       {/* Add the content of the card here */}
       <h1>Front</h1>
     </div>;
 }
 
 function BackContent() {
-  return    <div className="card h-full p-16 w-full h-full rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-purple-500">
+  return    <div className="card h-full p-16 w-full h-60vh rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-purple-500">
       {/* Add the content of the card here */}
       <h1>Back</h1>
     </div>;
