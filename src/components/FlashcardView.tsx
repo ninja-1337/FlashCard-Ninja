@@ -36,14 +36,14 @@ export default function ChatLine( id :any ) {
   );
 }
 function FrontContent() {
-  return    <div className="card w-2/3 p-36 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500">
+  return    <div className="card w-full h-full p-16 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500">
       {/* Add the content of the card here */}
       <h1>Front</h1>
     </div>;
 }
 
 function BackContent() {
-  return    <div className="card p-36 w-2/3 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-purple-500">
+  return    <div className="card p-16 w-full h-full rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-purple-500">
       {/* Add the content of the card here */}
       <h1>Back</h1>
     </div>;
