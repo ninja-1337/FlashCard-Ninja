@@ -28,7 +28,7 @@ export default function ChatLine( id :any ) {
   return (
 
 
-<div className="card w-2/3 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500" onClick={toggleState}>
+<div className="card w-2/3 h-2/3 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500" onClick={toggleState}>
       {isFront ? <FrontContent /> : <BackContent />}
     </div>
 
