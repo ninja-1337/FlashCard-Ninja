@@ -87,6 +87,13 @@ function NavBar() {
         </Link>
         <Spacer />
         <Spacer />
+        <Link color="inherit" href="/">
+       <Text b color="inherit" hideIn="xs">
+       View
+          </Text> 
+        </Link>
+        <Spacer />
+        <Spacer />
         <Link color="inherit" href="/play">
           
        <Text b color="inherit" hideIn="xs">
