@@ -26,19 +26,14 @@ export default function ChatLine( id :any ) {
   const { data: FlashCard, isFetched, isFetching } =  trpc.auth.getFlashCardById.useQuery({ text: id.id});
 
   return (
-    <div
-      className={
-        id != "bot" ? "float-right clear-both" : "float-left clear-both"
-      }
-    >
 
-<div onClick={toggleState}>
+
+<div className="card w-2/3 p-36 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500" onClick={toggleState}>
       {isFront ? <FrontContent /> : <BackContent />}
     </div>
 
 
 
-    </div>
   );
 }
 function FrontContent() {
