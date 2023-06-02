@@ -25,7 +25,10 @@ export default function ChatLine( id :any ) {
       <div>Question : {FlashCard?.Description}</div>
       <div>Points : {FlashCard?.points}</div>
 
-    </div></>: <BackContent card={FlashCard}/>}
+    </div></>: <><div className="card h-full p-16 w-full h-60vh rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-purple-500">
+      {/* Add the content of the card here */}
+      <h1>Back</h1>
+    </div></>}
      
     </div>
 
