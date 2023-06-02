@@ -30,9 +30,9 @@ export default function ChatLine( id :any ) {
 function FrontContent(card :any) {
   return    <div className="card w-full h-60vh p-16 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500">
       {/* Add the content of the card here */}
-      <h1>Name {card.Name}</h1>
-      <div>Question : {card.Description}</div>
-      <div>Points : {card.points}</div>
+      <h1>Name {card.card.Name}</h1>
+      <div>Question : {card.card.Description}</div>
+      <div>Points : {card.card.points}</div>
 
     </div>;
 }
