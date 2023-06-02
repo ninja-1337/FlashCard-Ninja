@@ -1,18 +1,8 @@
 import clsx from "clsx";
-import Balancer from "react-wrap-balancer";
 import { Button } from "./Button";
 import React, { useState } from "react";
 import { trpc } from "../utils/trpc";
 import { useTheme as useNextTheme } from 'next-themes'
-// wrap Balancer to remove type errors :( - @TODO - fix this ugly hack
-const BalancerWrapper = (props: any) => <Balancer {...props} />;
-
-export type Message = {
-  who: "bot" | "user" | undefined;
-  message?: string;
-  theme?:any;
-};
-
 
 export default function ChatLine( id :any ) {
   const [isFront, setIsFront] = useState(true);
@@ -30,20 +20,24 @@ export default function ChatLine( id :any ) {
 
 <div className="card h-60vh w-2/3 h-2/3 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500" onClick={toggleState}>
       {isFront ? <FrontContent /> : <BackContent />}
+      {FlashCard?.points}
     </div>
 
 
 
   );
 }
-function FrontContent() {
+function FrontContent(card :any) {
   return    <div className="card w-full h-60vh p-16 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500">
       {/* Add the content of the card here */}
-      <h1>Front</h1>
+      <h1>Name {card.Name}</h1>
+      <div>Question : {card.Description}</div>
+      <div>Points : {card.points}</div>
+
     </div>;
 }
 
-function BackContent() {
+function BackContent(card :any) {
   return    <div className="card h-full p-16 w-full h-60vh rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-purple-500">
       {/* Add the content of the card here */}
       <h1>Back</h1>
