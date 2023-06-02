@@ -99,10 +99,10 @@ const [editMode ,setEditMode]= useState(false)
 
     </div>
          
-            <button onClick={hadnleArrival} className="rounded-full bg-orange-400 p-6  text-white">
+            {/* <button onClick={hadnleArrival} className="rounded-full bg-orange-400 p-6  text-white">
             +  New FlashCard
             </button>
-       
+        */}
       </main>
     </>
   );
