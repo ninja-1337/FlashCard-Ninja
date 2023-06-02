@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 
           Welcome to FlashCard Ninja!
 
-Create and Master FlashCards with our innovative app. Whether you're a student, a language learner, or just someone looking to expand your knowledge, FlashCard Ninja is the perfect tool to enhance your learning experience. With our user-friendly interface and powerful features, you can easily create custom flashcards, organize them into different groups, and test your knowledge with an engaging game.
+Create and Master FlashCards with our innovative app. Whether you `&apos;`re a student, a language learner, or just someone looking to expand your knowledge, FlashCard Ninja is the perfect tool to enhance your learning experience. With our user-friendly interface and powerful features, you can easily create custom flashcards, organize them into different groups, and test your knowledge with an engaging game.
           </p>
     
         </div>
