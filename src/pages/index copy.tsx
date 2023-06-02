@@ -16,21 +16,21 @@ const [editMode ,setEditMode]= useState(false)
   // {((formData.pricePerKg*formData.alivekg)+formData.slaugherPrice+formData.transferPrice)/formData.revievedNetKG}
   
 
-  const { data: paralaves }  = trpc.auth.getFlashCards.useQuery();
+  const { data: paralaves }  = trpc.auth.getParalaves.useQuery();
   if (paralaves) {
     paralaves.sort((a, b) => {
-      const dateA = a.CreatedAt.getTime();
-      const dateB = b.CreatedAt.getTime();
+      const dateA = a.RecievedAt.getTime();
+      const dateB = b.RecievedAt.getTime();
   
       return  dateB-dateA;
     });
   }
-  const NewArrival = trpc.auth.NewFlashCard.useMutation({
+  const NewArrival = trpc.auth.NewArrival.useMutation({
     async onSuccess() {
       // refetches posts after a post is added
     },
   });
-  const delArrival = trpc.auth.DeleteFlashCard.useMutation({
+  const delArrival = trpc.auth.DeleteArrival.useMutation({
     async onSuccess() {
       // refetches posts after a post is added
     },
@@ -40,7 +40,7 @@ const [editMode ,setEditMode]= useState(false)
   const   hadnleArrival=async ()=>{
     try {
     const id=await (await NewArrival.mutateAsync({text:""})).id
-    router.push('/flashcard/'+id); 
+    router.push('/paralavi/'+id); 
     } catch (cause) {
       console.error({ cause }, "Failed to add post");
     }
@@ -78,10 +78,10 @@ const [editMode ,setEditMode]= useState(false)
    
     
     <div key={paralavi.id} className="border border-gray-500 rounded-xl m-4 p-3">
-    <a href={`/flashcard/${paralavi.id.toString()}`} >
+    <a href={`/paralavi/${paralavi.id.toString()}`} >
         <> <div>FlashCard ID : {paralavi.id}</div>
-      <div >Created At : {paralavi.CreatedAt.toDateString()}<> </>{paralavi.CreatedAt.toLocaleTimeString()}{paralavi.Name=='NaN' && <span className="ml-1  text-red-700 min-w-fit max-w-fit rounded-lg bg-red-600">🗡️</span> } {paralavi.Name=='NaN' || <span  className="ml-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-600">🗡️</span> } </div>
-      {paralavi.Type=='NaN' || <div  className="ml-0 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60">FlashCard Type:{" "+paralavi.Type+" "} </div> }
+      <div >Created At : {paralavi.RecievedAt.toDateString()}<> </>{paralavi.RecievedAt.toLocaleTimeString()}{paralavi.netKgAfterkatharisma=='NaN' && <span className="ml-1  text-red-700 min-w-fit max-w-fit rounded-lg bg-red-600">🗡️</span> } {paralavi.netKgAfterkatharisma.toString()=='NaN' || <span  className="ml-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-600">🗡️</span> } </div>
+      {paralavi.netKgAfterkatharisma.toString()=='NaN' || <div  className="ml-0 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60">Net Clean:{paralavi.netKgAfterkatharisma.toString()+" Kg"} </div> }
       </>
       </a>
       {editMode ? <button onClick={()=>{deleteArrival(paralavi.id)}}  className="rounded-lg bg-red-500  mt-0 p-1 z-0">Delete</button>:<></>}

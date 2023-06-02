@@ -62,13 +62,26 @@ export const authRouter = router({
 
     });
   }),
+  getFlashCards: publicProcedure.query(({ ctx }) => {
+    return ctx.prisma.flashCards.findMany({
 
+    });
+  }),
   getParalaviById: publicProcedure
   .input(z.object({ text: z.string().nullish() }).nullish())
   .query(({ ctx,input}) => {
     return ctx.prisma.paralaves.findUnique({
       where: {
         id:input?.text?.toString()
+      },
+    });
+  }),
+  getFlashCardById: publicProcedure
+  .input(z.object({ text: z.string().nullish() }).nullish())
+  .query(({ ctx,input}) => {
+    return ctx.prisma.flashCards.findUnique({
+      where: {
+        id:input?.text+""
       },
     });
   }),
@@ -84,6 +97,7 @@ export const authRouter = router({
       },
     });
   }),
+  
   getUserSavedChat: protectedProcedure.query(({ ctx, input }) => {
     return ctx.prisma.aichats.findMany({
       where: {
@@ -179,6 +193,37 @@ export const authRouter = router({
         },
       });
     }),
+    NewFlashCard: publicProcedure
+    .input(
+      z.object({
+        text: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+       return  await prisma.flashCards.create({
+      data:{Name:"Name Here",
+      Description:"Description Here",
+      Answer:"Answer Here",
+      frequency:"NaN",
+      Group:"NaN",
+      points:"NaN",
+      Type:"NaN",
+      }
+      });
+    }),
+    DeleteFlashCard: publicProcedure
+    .input(
+      z.object({
+        text: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+       return  await prisma.flashCards.delete({
+        where: {
+          id: input.text.toString(),
+        },
+      });
+    }),
     updateParagelia: publicProcedure
     .input(
       z.object({
@@ -218,6 +263,54 @@ export const authRouter = router({
             AlivePigNumber: input.alivePigNo,
             AlivePricePerKg: input.pricePerKg,
             SlaugherCost: input.slaugherPrice,
+          },
+        });
+      
+        console.log(updatedParalaves);
+      } catch (error) {
+        // Handle the error silently
+        console.error("An error occurred while updating the record:", error);
+      }
+      
+    }),
+    updateFlashCard: publicProcedure
+    .input(
+      z.object({
+        id: z.string(),
+        Name: z.string(),
+        Type: z.string(),
+        Group: z.string(),
+        Description: z.string(),
+        Answer: z.string(),
+        Frequency: z.string(),
+      
+    
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const recordId = input.id.toString();
+
+      try {
+        const existingRecord = await prisma.flashCards.findUnique({
+          where: { id: recordId },
+        });
+      
+        if (!existingRecord) {
+          // Handle the case when the record is not found
+          console.log(`Record with ID ${recordId} not found.`);
+          return; // Or you can perform any other desired action
+        }
+      
+        const updatedParalaves = await prisma.flashCards.update({
+          where: { id: recordId },
+          data: {
+            Name: input.Name,
+            Type: input.Type,
+            Group: input.Group,
+            Description: input.Description,
+            Answer: input.Answer,
+            frequency: input.Frequency,
+           
           },
         });
       
