@@ -64,14 +64,8 @@ const [editMode ,setEditMode]= useState(false)
    
         
       <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-           <span className="text-[hsl(280,100%,70%)]"> FlashCard</span>Ninja
-          </h1><span className="pt-2"><span className="pt-0">Enable Editing</span>
-          <span>
-          <Switch  className="pt-2" size="xs" onChange={()=>{
-          
-               setEditMode(!editMode)
-            
-          }} preventDefault={false} checked={editMode} ></Switch></span></span>
+           <span className="text-[hsl(280,100%,70%)]"> Manual </span>View
+          </h1>
           <div>
           {paralaves && paralaves.map((paralavi) => {
   return (
