@@ -87,7 +87,7 @@ return parseInt(tcost.toString())+parseInt(scost.toString())
   return (
     <>
       <Head>
-        <title>B-Inventory</title>
+        <title>FlashCard</title>
         <meta name="description" content="Verbal Agent" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -96,10 +96,10 @@ return parseInt(tcost.toString())+parseInt(scost.toString())
    
        
       <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-           <span className="text-[hsl(280,100%,70%)]"> B </span> inventory
+           <span className="text-[hsl(280,100%,70%)]"> Flash </span> Card
           </h1>
-          <p>Arrival ID: {router.query.inventory}</p>
-          <p>Recieved At: {ArrivalData?.RecievedAt.toLocaleString()}</p>
+          <p>FlashCard ID: {router.query.inventory}</p>
+          <p>Created At: {ArrivalData?.RecievedAt.toLocaleString()}</p>
 
           {(typeof ArrivalData?.AliveKg === 'string' && !isFetching)&&
         <form onSubmit={handleSubmit}>
@@ -107,7 +107,7 @@ return parseInt(tcost.toString())+parseInt(scost.toString())
            <span className="text-[hsl(280,100%,70%)]">  </span> Alive
           </h2>
           <div  className="items-center justify-center flex   ">
-        <label htmlFor="name">Alive Pig Number:</label>
+        <label htmlFor="name">FlashCard Name:</label>
         <input
           type="number"
           id="alivePigNo"
@@ -117,7 +117,7 @@ return parseInt(tcost.toString())+parseInt(scost.toString())
         />
       </div>
       <div  className="items-center justify-center flex   ">
-        <label htmlFor="name">Alive KG in Total:</label>
+        <label htmlFor="name">FlashCard Type:</label>
         <input
           type="number"
           id="alivekg"
@@ -127,7 +127,7 @@ return parseInt(tcost.toString())+parseInt(scost.toString())
         />
       </div>
       <div  className="items-center justify-center flex   ">
-        <label htmlFor="name">Alive Price Per KG :</label>
+        <label htmlFor="name">FlashCard Group :</label>
         <input
           type="number"
           id="pricePerKg"
@@ -137,14 +137,14 @@ return parseInt(tcost.toString())+parseInt(scost.toString())
         />
       </div>
       <div  className="items-center justify-center flex   ">
-        <label htmlFor="name">Whole Alive Costs :</label>
+        <label htmlFor="name">FlashCard Description :</label>
        {formData.alivekg*formData.pricePerKg}  <label htmlFor="name">€</label>
       </div>
       <h2 className="items-center justify-center flex  flex-col text-2xl font-extrabold tracking-tight ">
            <span className="text-[hsl(280,100%,70%)]">  </span> + Costs After
           </h2>
       <div className="items-center justify-center flex   ">
-        <label htmlFor="name">Slaugher Costs :</label>
+        <label htmlFor="name">FlashCard Answer :</label>
         <input
           type="number"
           id="slaugherPrice"
@@ -154,7 +154,7 @@ return parseInt(tcost.toString())+parseInt(scost.toString())
         />
       </div>
       <div  className="items-center justify-center flex   ">
-        <label htmlFor="name">Transfer Costs :</label>
+        <label htmlFor="name">FlashCard Frequency :</label>
         <input
           type="number"
           id="transferPrice"

@@ -115,3 +115,16 @@ model Paralaves {
    recievedNetKG      String 
    netKgAfterkatharisma String
 }
+
+model FlashCards {
+  id         String   @id @default(cuid())
+  CreatedAt DateTime @default(now())
+  Valuesupdated_at DateTime @default(now())
+  Name       String
+  Type       String
+  Group       String
+  Description     String
+  Answer       String
+  points      String 
+   frequency String
+}

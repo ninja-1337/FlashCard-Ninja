@@ -64,8 +64,8 @@ const [editMode ,setEditMode]= useState(false)
    
         
       <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-           <span className="text-[hsl(280,100%,70%)]"> FlashCard</span>Ninja
-          </h1><span className="pt-2"><span className="pt-0">Enable Editing</span>
+           <span className="text-[hsl(280,100%,70%)]"> Choose</span> Mode
+          </h1><span className="pt-2"><span className="pt-0">Competitive</span>
           <span>
           <Switch  className="pt-2" size="xs" onChange={()=>{
           
@@ -73,36 +73,23 @@ const [editMode ,setEditMode]= useState(false)
             
           }} preventDefault={false} checked={editMode} ></Switch></span></span>
           <div>
-          {paralaves && paralaves.map((paralavi) => {
-  return (
-   
-    
-    <div key={paralavi.id} className="border border-gray-500 rounded-xl m-4 p-3">
-    <a href={`/paralavi/${paralavi.id.toString()}`} >
-        <> <div>FlashCard ID : {paralavi.id}</div>
-      <div >Created At : {paralavi.RecievedAt.toDateString()}<> </>{paralavi.RecievedAt.toLocaleTimeString()}{paralavi.netKgAfterkatharisma=='NaN' && <span className="ml-1  text-red-700 min-w-fit max-w-fit rounded-lg bg-red-600">🗡️</span> } {paralavi.netKgAfterkatharisma.toString()=='NaN' || <span  className="ml-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-600">🗡️</span> } </div>
-      {paralavi.netKgAfterkatharisma.toString()=='NaN' || <div  className="ml-0 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60">Net Clean:{paralavi.netKgAfterkatharisma.toString()+" Kg"} </div> }
-      </>
-      </a>
-      {editMode ? <button onClick={()=>{deleteArrival(paralavi.id)}}  className="rounded-lg bg-red-500  mt-0 p-1 z-0">Delete</button>:<></>}
-   
-    </div>
- 
-
      
- 
-  );
-})}
   
 
 
 
     </div>
-         
-            <button onClick={hadnleArrival} className="rounded-full bg-orange-400 p-6  text-white">
-            +  New FlashCard
+         <>
+            <button onClick={()=>{alert("In Development")}} className="rounded-md m-3 w-1/4 bg-orange-400 p-6  text-white">
+            Random Exploration
             </button>
-       
+            <button onClick={()=>{alert("In Development")}} className="rounded-md m-3 w-1/4 bg-orange-400 p-6  text-white">
+            Chose FlashCard Groups
+            </button>
+            <button onClick={()=>{alert("In Development")}} className="rounded-md m-3 w-1/4 bg-orange-400 p-6  text-white">
+            Community FlashCard Groups
+            </button>
+            </>
       </main>
     </>
   );

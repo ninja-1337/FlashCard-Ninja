@@ -70,7 +70,7 @@ function NavBar() {
       >
         <Link href="/">
           <Text b color="inherit" hideIn="xs">
-          B-Inventory
+          FlashCard-Ninja
           </Text>
         </Link>
       </Navbar.Brand>
@@ -82,11 +82,18 @@ function NavBar() {
       >
        <Link color="inherit" href="/">
        <Text b color="inherit" hideIn="xs">
-       App
+       Create
           </Text> 
         </Link>
         <Spacer />
         <Spacer />
+        <Link color="inherit" href="/play">
+          
+       <Text b color="inherit" hideIn="xs">
+       Play
+          </Text> 
+        </Link>
+        <Spacer />    <Spacer />
 
         <Link href="/about">
         <Text b color="inherit" hideIn="xs">
