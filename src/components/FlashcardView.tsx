@@ -19,7 +19,13 @@ export default function ChatLine( id :any ) {
 
 
 <div className="card h-60vh w-2/3 h-2/3 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500" onClick={toggleState}>
-      {isFront ? <FrontContent card={FlashCard}/> : <BackContent card={FlashCard}/>}
+      {isFront ? <><div className="card w-full h-60vh p-16 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500">
+      {/* Add the content of the card here */}
+      <h1>Name {FlashCard?.Name}</h1>
+      <div>Question : {FlashCard?.Description}</div>
+      <div>Points : {FlashCard?.points}</div>
+
+    </div></>: <BackContent card={FlashCard}/>}
      
     </div>
 
@@ -28,13 +34,7 @@ export default function ChatLine( id :any ) {
   );
 }
 function FrontContent(card :any) {
-  return    <div className="card w-full h-60vh p-16 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 to-purple-500">
-      {/* Add the content of the card here */}
-      <h1>Name {card.Name}</h1>
-      <div>Question : {card.Description}</div>
-      <div>Points : {card.points}</div>
-
-    </div>;
+  return    ;
 }
 
 function BackContent(card :any) {
