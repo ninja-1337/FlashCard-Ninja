@@ -4,7 +4,7 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { SocialIcon } from "react-social-icons";
 import { trpc } from "../utils/trpc";
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect  } from 'react';
 import { useRouter } from 'next/router';
 import { Switch, Spacer } from "@nextui-org/react";
 
@@ -14,9 +14,15 @@ const [editMode ,setEditMode]= useState(false)
   const router = useRouter();
   const { data: session, status } = useSession();
   // {((formData.pricePerKg*formData.alivekg)+formData.slaugherPrice+formData.transferPrice)/formData.revievedNetKG}
-  
+
 
   const { data: paralaves }  = trpc.auth.getFlashCards.useQuery();
+  const [filtered ,setFiltered]= useState(paralaves)
+  const filterGroup = (group:string) => {
+		setFiltered(paralaves?.filter((paralavi:any) => {
+			return paralavi.Group.includes(group);
+		}))
+	}
   if (paralaves) {
     paralaves.sort((a, b) => {
       const dateA = a.CreatedAt.getTime();
@@ -36,6 +42,11 @@ const [editMode ,setEditMode]= useState(false)
     },
   });
 
+  useEffect(() => {
+    if(filtered===undefined){
+      filterGroup("");
+    }
+  }, ); 
 
   const   hadnleArrival=async ()=>{
     try {
@@ -53,6 +64,25 @@ const [editMode ,setEditMode]= useState(false)
       console.error({ cause }, "Failed to add post");
     }
   }
+
+  type ObjectWithAttributes = { [key: string]: any };
+
+function getUniqueAttributeValues(objects: any, attribute: string): any[] {
+  if (!Array.isArray(objects)) {
+    return [];
+  }
+  const valuesSet = new Set<any>();
+
+  objects.forEach((obj:any) => {
+    if (obj.hasOwnProperty(attribute)) {
+      valuesSet.add(obj[attribute]);
+    }
+  });
+
+  return Array.from(valuesSet);
+}
+const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
+
   return (
     <>
       <Head>
@@ -72,8 +102,26 @@ const [editMode ,setEditMode]= useState(false)
                setEditMode(!editMode)
             
           }} preventDefault={false} checked={editMode} ></Switch></span></span>
+          <>
+          
+		{uniqueGroups.length > 0 ? (
+			<div className="genre-filter-wrapper">
+         <button onClick={() => {
+							filterGroup("");
+						}}  className="filter bg-gradient-to-r from-yellow-300 to-red-400 p-2 m-1 rounded-md"> Reset Filters</button>
+				{uniqueGroups.map((group) => (
+					<button key={group} onClick={() => {
+							filterGroup(group);
+						}}  className="filter bg-gradient-to-r from-yellow-300 to-red-400 p-2 m-1 rounded-md">{group}</button>
+				))}
+			</div>
+		) : (
+			<p className="message">No Filters</p>
+		)}
+	</>
+      
           <div>
-          {paralaves && paralaves.map((paralavi) => {
+          {filtered && filtered?.map((paralavi) => {
   return (
    
     
@@ -87,7 +135,7 @@ const [editMode ,setEditMode]= useState(false)
       </>
       </a>
       {editMode ? <button onClick={()=>{deleteArrival(paralavi.id)}}  className="rounded-lg bg-red-500  mt-0 p-1 z-0">Delete</button>:<></>}
-   
+
     </div>
      
  

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { SocialIcon } from "react-social-icons";
 import { trpc } from "../utils/trpc";
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Switch, Spacer } from "@nextui-org/react";
 
@@ -17,6 +17,12 @@ const [editMode ,setEditMode]= useState(false)
   
 
   const { data: paralaves }  = trpc.auth.getFlashCards.useQuery();
+  const [filtered ,setFiltered]= useState(paralaves)
+  const filterGroup = (group:string) => {
+		setFiltered(paralaves?.filter((paralavi:any) => {
+			return paralavi.Group.includes(group);
+		}))
+	}
   if (paralaves) {
     paralaves.sort((a, b) => {
       const dateA = a.CreatedAt.getTime();
@@ -36,7 +42,11 @@ const [editMode ,setEditMode]= useState(false)
     },
   });
 
-
+  useEffect(() => {
+    if(filtered===undefined){
+      filterGroup("");
+    }
+  }, ); 
   const   hadnleArrival=async ()=>{
     try {
     const id=await (await NewArrival.mutateAsync({text:""})).id
@@ -53,6 +63,26 @@ const [editMode ,setEditMode]= useState(false)
       console.error({ cause }, "Failed to add post");
     }
   }
+
+  type ObjectWithAttributes = { [key: string]: any };
+
+function getUniqueAttributeValues(objects: any, attribute: string): any[] {
+  if (!Array.isArray(objects)) {
+    return [];
+  }
+  const valuesSet = new Set<any>();
+
+  objects.forEach((obj:any) => {
+    if (obj.hasOwnProperty(attribute)) {
+      valuesSet.add(obj[attribute]);
+    }
+  });
+
+  return Array.from(valuesSet);
+}
+
+  const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
+
   return (
     <>
       <Head>
@@ -67,7 +97,24 @@ const [editMode ,setEditMode]= useState(false)
            <span className="text-[hsl(280,100%,70%)]"> Manual </span>View
           </h1>
           <div>
-          {paralaves && paralaves.map((paralavi) => {
+          <>
+          
+          {uniqueGroups.length > 0 ? (
+            <div className="genre-filter-wrapper">
+               <button onClick={() => {
+                    filterGroup("");
+                  }}  className="filter bg-gradient-to-r from-yellow-300 to-red-400 p-2 m-1 rounded-md"> Reset Filters</button>
+              {uniqueGroups.map((group) => (
+                <button key={group} onClick={() => {
+                    filterGroup(group);
+                  }}  className="filter bg-gradient-to-r from-yellow-300 to-red-400 p-2 m-1 rounded-md">{group}</button>
+              ))}
+            </div>
+          ) : (
+            <p className="message">No Filters</p>
+          )}
+        </>
+          {paralaves && filtered?.map((paralavi) => {
   return (
    
     
