@@ -73,9 +73,11 @@ const [editMode ,setEditMode]= useState(false)
     
     <div key={paralavi.id} className="border border-gray-500 rounded-xl m-4 p-3">
     <a href={`/flashcardView/${paralavi.id.toString()}`} >
-        <> <div>FlashCard ID : {paralavi.id}</div>
-      <div >Created At : {paralavi.CreatedAt.toDateString()}<> </>{paralavi.CreatedAt.toLocaleTimeString()}{paralavi.Name=='NaN' && <span className="ml-1  text-red-700 min-w-fit max-w-fit rounded-lg bg-red-600">🗡️</span> } {paralavi.Name=='NaN' || <span  className="ml-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-600">🗡️</span> } </div>
-      {paralavi.Type=='NaN' || <div  className="ml-0 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60">FlashCard Type:{" "+paralavi.Type+" "} </div> }
+        <> <div>FlashCard Name : {paralavi.Name}</div>
+        {/* <div >Created At : {paralavi.CreatedAt.toDateString()}<> </>{paralavi.CreatedAt.toLocaleTimeString()}{paralavi.Name=='NaN' && <span className="ml-1  text-red-700 min-w-fit max-w-fit rounded-lg bg-red-600">🗡️</span> } {paralavi.Name=='NaN' || <span  className="ml-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-600">🗡️</span> } </div>
+      */}
+      <div >Points : {paralavi.frequency}<> </>{paralavi.CreatedAt.toLocaleTimeString()}{paralavi.Name=='NaN' && <span className="ml-1  text-red-700 min-w-fit max-w-fit rounded-lg bg-red-600">🗡️</span> } {paralavi.Name=='NaN' || <span  className="ml-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-600">🗡️</span> } </div>
+      {paralavi.Type=='NaN' || <span  className="ml-0 p-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60 m-1">FlashCard Type:{" "+paralavi.Type+" "} </span> } {paralavi.Group=='NaN' || <span  className="ml-0 text-green-700 p-1 m-1 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60">Group:{" "+paralavi.Group+" "} </span> }
       </>
       </a>
       {editMode ? <button onClick={()=>{deleteArrival(paralavi.id)}}  className="rounded-lg bg-red-500  mt-0 p-1 z-0">Delete</button>:<></>}
