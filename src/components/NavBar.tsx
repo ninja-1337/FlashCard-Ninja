@@ -243,17 +243,27 @@ function NavBar() {
       <Navbar.Collapse  color="white" disableAnimation>
       <Navbar.CollapseItem key="About" color="white" activeColor="warning">
       <Link color="inherit" href="/" onClick={() => HandleSideMenu()}>
-            App
+            Create
           </Link>
         </Navbar.CollapseItem>
  
-        <Navbar.CollapseItem key="Projects" activeColor="warning">
-        <Link color="inherit" href="/chats" onClick={() => HandleSideMenu()}>
-            Saved Chats
+        <Navbar.CollapseItem key="view" activeColor="warning">
+        <Link color="inherit" href="/view" onClick={() => HandleSideMenu()}>
+            View
           </Link>
         </Navbar.CollapseItem>
       
-        
+        <Navbar.CollapseItem key="play" activeColor="warning">
+        <Link color="inherit" href="/play" onClick={() => HandleSideMenu()}>
+            Play
+          </Link>
+        </Navbar.CollapseItem>
+        <Navbar.CollapseItem key="about" activeColor="warning">
+        <Link color="inherit" href="/about" onClick={() => HandleSideMenu()}>
+            About
+          </Link>
+        </Navbar.CollapseItem>
+      
       </Navbar.Collapse>
       
     </Navbar>
