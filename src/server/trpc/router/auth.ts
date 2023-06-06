@@ -57,25 +57,13 @@ export const authRouter = router({
       },
     });
   }),
-  getParalaves: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.paralaves.findMany({
 
-    });
-  }),
   getFlashCards: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.flashCards.findMany({
 
     });
   }),
-  getParalaviById: publicProcedure
-  .input(z.object({ text: z.string().nullish() }).nullish())
-  .query(({ ctx,input}) => {
-    return ctx.prisma.paralaves.findUnique({
-      where: {
-        id:input?.text?.toString()
-      },
-    });
-  }),
+
   getFlashCardById: publicProcedure
   .input(z.object({ text: z.string().nullish() }).nullish())
   .query(({ ctx,input}) => {
@@ -98,17 +86,7 @@ export const authRouter = router({
     });
   }),
   
-  getUserSavedChat: protectedProcedure.query(({ ctx, input }) => {
-    return ctx.prisma.aichats.findMany({
-      where: {
-        userId : ctx.session.user.id ,
-      
-      },
-      // include: {
-      //   sent_by: true, // Return all fields
-      // },
-    });
-  }),
+
   getUserDiscoverable: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.user.findUnique({
       where: {
@@ -116,36 +94,7 @@ export const authRouter = router({
       },
     });
   }),
-  saveChat: protectedProcedure
-    .input(
-      z.object({
-        text: z.string(),
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-      const post = await prisma.aichats.create({
-        data: {
-          
-        userId:ctx.session?.user.id,
-        chat:{
-          input
-        }
-        },
-      });
-    }),
-    getParalavByID: publicProcedure
-    .input(
-      z.object({
-        text: z.string(),
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-      return ctx.prisma.paralaves.findUnique({
-        where: {
-          id:input.toString()
-        },
-      });
-    }),
+
   add: protectedProcedure
     .input(
       z.object({
@@ -161,38 +110,7 @@ export const authRouter = router({
         },
       });
     }),
-    NewArrival: publicProcedure
-    .input(
-      z.object({
-        text: z.string(),
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-       return  await prisma.paralaves.create({
-      data:{AliveKg:"NaN",
-      TransferCost:"NaN",
-      recievedNetKG:"NaN",
-      netKgAfterkatharisma:"NaN",
 
-      AlivePigNumber:"NaN",
-      AlivePricePerKg:"NaN",
-      SlaugherCost:"NaN",
-      }
-      });
-    }),
-    DeleteArrival: publicProcedure
-    .input(
-      z.object({
-        text: z.string(),
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-       return  await prisma.paralaves.delete({
-        where: {
-          id: input.text.toString(),
-        },
-      });
-    }),
     NewFlashCard: publicProcedure
     .input(
       z.object({
@@ -224,55 +142,7 @@ export const authRouter = router({
         },
       });
     }),
-    updateParagelia: publicProcedure
-    .input(
-      z.object({
-        id: z.string(),
-        alivePigNo: z.string(),
-        alivekg: z.string(),
-        pricePerKg: z.string(),
-        slaugherPrice: z.string(),
-        transferPrice: z.string(),
-        revievedNetKG: z.string(),
-        netKgAfterkatharisma: z.string(),
-       
-    
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-      const recordId = input.id.toString();
-
-      try {
-        const existingRecord = await prisma.paralaves.findUnique({
-          where: { id: recordId },
-        });
-      
-        if (!existingRecord) {
-          // Handle the case when the record is not found
-          console.log(`Record with ID ${recordId} not found.`);
-          return; // Or you can perform any other desired action
-        }
-      
-        const updatedParalaves = await prisma.paralaves.update({
-          where: { id: recordId },
-          data: {
-            AliveKg: input.alivekg,
-            TransferCost: input.transferPrice,
-            recievedNetKG: input.revievedNetKG,
-            netKgAfterkatharisma: input.netKgAfterkatharisma,
-            AlivePigNumber: input.alivePigNo,
-            AlivePricePerKg: input.pricePerKg,
-            SlaugherCost: input.slaugherPrice,
-          },
-        });
-      
-        console.log(updatedParalaves);
-      } catch (error) {
-        // Handle the error silently
-        console.error("An error occurred while updating the record:", error);
-      }
-      
-    }),
+   
     updateFlashCard: publicProcedure
     .input(
       z.object({
@@ -336,22 +206,7 @@ export const authRouter = router({
         },
       });
     }),
-  createUserAgent: protectedProcedure
-    .input(
-      z.object({
-        prompt: z.string(),
-        name: z.string(),
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-      await prisma.agents.create({
-        data: {
-          name: "" + input.name,
-          prompt: "" + input.prompt,
-          userId: ctx.session?.user.id,
-        },
-      });
-    }),
+
   updateDiscoverable: protectedProcedure
     .input(z.boolean())
     .mutation(async ({ ctx, input }) => {

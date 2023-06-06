@@ -13,46 +13,7 @@ const Home: NextPage = () => {
 const [editMode ,setEditMode]= useState(false)
   const router = useRouter();
   const { data: session, status } = useSession();
-  // {((formData.pricePerKg*formData.alivekg)+formData.slaugherPrice+formData.transferPrice)/formData.revievedNetKG}
-  
 
-  const { data: paralaves }  = trpc.auth.getParalaves.useQuery();
-  if (paralaves) {
-    paralaves.sort((a, b) => {
-      const dateA = a.RecievedAt.getTime();
-      const dateB = b.RecievedAt.getTime();
-  
-      return  dateB-dateA;
-    });
-  }
-  const NewArrival = trpc.auth.NewArrival.useMutation({
-    async onSuccess() {
-      // refetches posts after a post is added
-    },
-  });
-  const delArrival = trpc.auth.DeleteArrival.useMutation({
-    async onSuccess() {
-      // refetches posts after a post is added
-    },
-  });
-
-
-  const   hadnleArrival=async ()=>{
-    try {
-    const id=await (await NewArrival.mutateAsync({text:""})).id
-    router.push('/paralavi/'+id); 
-    } catch (cause) {
-      console.error({ cause }, "Failed to add post");
-    }
-  }
-  const   deleteArrival=async (id: string)=>{
-    try {
-    await (await delArrival.mutateAsync({text:id}))
-    window.location.reload();
-    } catch (cause) {
-      console.error({ cause }, "Failed to add post");
-    }
-  }
   return (
     <>
       <Head>
