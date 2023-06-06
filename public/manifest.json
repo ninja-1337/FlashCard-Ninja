@@ -31,21 +31,13 @@
         }
     ],
     "share_target":{
-        "action": "/share-target",
+        "action": "/",
         "enctype":"multipart/form-data",
-        "method":"POST",
+        "method":"GET",
         "params":{
             "title":"share",
             "text":"text",
-            "url":"share",
-            "files":[
-{
-"name":"media[]",
-"accept":["audio/*","image/*","video/*"]
-
-}
-
-            ]
+            "url":"share"
         }
 
     }
