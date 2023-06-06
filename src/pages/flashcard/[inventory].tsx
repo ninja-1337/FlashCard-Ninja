@@ -32,7 +32,7 @@ const Home: NextPage = () => {
 
   const slug=router.query.inventory?.toString()
  
-  const { data: ArrivalData, isFetched, isFetching } =  trpc.auth.getFlashCardById.useQuery({ text: slug?});
+  const { data: ArrivalData, isFetched, isFetching } =  trpc.auth.getFlashCardById.useQuery({ text: slug+""});
 
   const updateFlashCard = trpc.auth.updateFlashCard.useMutation();
   const [loading, setLoading] = useState(true)
