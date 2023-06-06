@@ -6,6 +6,15 @@
     "start_url": "https://flash-card-ninja.vercel.app/",
     "name": "FlashCard",
     "short_name": "FlashCard",
+    "share_target":{
+        "action":"share",
+        "params":{
+            "title":"share",
+            "text":"share",
+            "url":"share"
+        }
+
+    },
     "description": "FlashCard Ninja",
     "icons": [
         {
