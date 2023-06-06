@@ -209,10 +209,10 @@ function NavBar() {
       
           )}
           {!session?.user?.image && (
-             <>
+           
                 
             <Dropdown.Menu aria-label="User menu actions" >
-              <Dropdown.Item key="profile" css={{ backgroundColor:"inherit", height: "$18" }}>
+              <Dropdown.Item key="google" css={{ backgroundColor:"inherit", height: "$18" }}>
                 <button onClick={() => signIn("google")}>
                   <Text className="p-1 hover:text-orange-300" b color="inherit">
                     Login with Google
@@ -223,7 +223,7 @@ function NavBar() {
                   />
                 </button>
               </Dropdown.Item>
-              <Dropdown.Item key="profile" css={{ backgroundColor:"inherit", height: "$18" }}>
+              <Dropdown.Item key="discord" css={{ backgroundColor:"inherit", height: "$18" }}>
                 <button onClick={() => signIn("discord")}>
                   <Text className="p-1 hover:text-orange-300" b color="inherit">
                     Login with Discord
@@ -235,7 +235,7 @@ function NavBar() {
                 </button>
               </Dropdown.Item>
             </Dropdown.Menu>
-           </>
+        
           )}
         </Dropdown>
        
