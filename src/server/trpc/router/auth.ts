@@ -37,11 +37,11 @@ export const authRouter = router({
   }),
 
   getFlashCardById: publicProcedure
-  .input(z.object({ text: z.string().nullish() }).nullish())
+  .input(z.object({ text: z.string() }).nullish())
   .query(({ ctx,input}) => {
     return ctx.prisma.flashCards.findUnique({
       where: {
-        id:input?.text+""
+        id:input?.text
       },
     });
   }),
