@@ -3,7 +3,7 @@
     "background_color": "#040404",
     "display": "standalone",
     "scope": "/",
-    "start_url": "https://flash-card-ninja.vercel.app/",
+    "start_url": "/",
     "name": "FlashCard",
     "short_name": "FlashCard",
     
