@@ -16,5 +16,7 @@ const config = {
   images: {
     domains: ["https:/cdn.discordapp.com", "cdn.discordapp.com","https://lh3.googleusercontent.com","lh3.googleusercontent.com"],
   },
+  
 };
+
 export default config;
