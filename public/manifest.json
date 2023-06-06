@@ -31,7 +31,7 @@
         }
     ],
     "share_target":{
-        "action":"/share-target/",
+        "action":"/view",
         "enctype":"multipart/form-data",
         "method":"POST",
         "params":{
