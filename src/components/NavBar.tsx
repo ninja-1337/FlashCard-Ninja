@@ -51,12 +51,12 @@ function NavBar() {
   const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
-    <Navbar  css={{
+    <Navbar disableBlur shouldHideOnScroll  css={{
       $$navbarBackgroundColor: "transparent",
       $$navbarBlurBackgroundColor: "transparent",
       
       paddingLeft:"0",
-    }} className="pl-0">
+    }} className={currentTheme=="dark" ? "pl-0 bg-black rounded-3xl rounded-t-none":"pl-0 bg-white rounded-3xl rounded-t-none"}>
     
       <Navbar.Toggle
         ref={navbarToggleRef}
@@ -164,7 +164,7 @@ function NavBar() {
                 <>
                    <Dropdown.Trigger>
              
-                   <button className="text-l bg-gradient-to-r font-medium from-slate-600 to-sky-600 p-2 rounded-lg">
+                   <button className={currentTheme=="dark" ? "text-l bg-gradient-to-r font-medium from-slate-600 to-sky-600 p-2 rounded-lg":"text-l bg-gradient-to-r font-medium from-slate-300 to-sky-500 p-2 rounded-lg"} >
                   <p className="text-base font-medium ">Login</p>
                 </button>
                    </Dropdown.Trigger>

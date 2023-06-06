@@ -7,6 +7,7 @@ import { trpc } from "../utils/trpc";
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Switch, Spacer } from "@nextui-org/react";
+import { useTheme as useNextTheme } from 'next-themes'
 
 
 const Home: NextPage = () => {
@@ -63,7 +64,9 @@ const [editMode ,setEditMode]= useState(false)
       console.error({ cause }, "Failed to add post");
     }
   }
+  const { systemTheme, theme, setTheme } = useNextTheme();
 
+  const currentTheme = theme === 'system' ? systemTheme : theme;
   type ObjectWithAttributes = { [key: string]: any };
 
 function getUniqueAttributeValues(objects: any, attribute: string): any[] {
@@ -99,20 +102,21 @@ function getUniqueAttributeValues(objects: any, attribute: string): any[] {
           <div>
           <>
           
-          {uniqueGroups.length > 0 ? (
-            <div className="genre-filter-wrapper">
-               <button onClick={() => {
-                    filterGroup("");
-                  }}  className="filter bg-gradient-to-r font-medium from-slate-500 to-sky-500 p-2 m-1 rounded-md"> Reset Filters</button>
-              {uniqueGroups.map((group) => (
-                <button key={group} onClick={() => {
-                    filterGroup(group);
-                  }}  className="filter bg-gradient-to-r font-medium from-slate-500 to-sky-500 p-2 m-1 rounded-md">{group}</button>
-              ))}
-            </div>
-          ) : (
-            <p className="message">No Filters</p>
-          )}
+              
+		{uniqueGroups.length > 0 ? (
+			<div className="genre-filter-wrapper">
+         <button onClick={() => {
+							filterGroup("");
+						}} className={currentTheme=="dark" ? "filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md"} > Reset Filters</button>
+				{uniqueGroups.map((group) => (
+					<button key={group} onClick={() => {
+							filterGroup(group);
+						}}  className={currentTheme=="dark" ? "filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md"}>{group}</button>
+				))}
+			</div>
+		) : (
+			<p className="message">No Filters</p>
+		)}
         </>
           {paralaves && filtered?.map((paralavi) => {
   return (
