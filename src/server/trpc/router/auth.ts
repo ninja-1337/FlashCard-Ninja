@@ -28,35 +28,7 @@ export const authRouter = router({
   getSecretMessage: protectedProcedure.query(() => {
     return "Content just for authenticated Users";
   }),
-  getSecretMessage2: protectedProcedure.query(() => {
-    return "Content just for authenticated Users";
-  }),
-  getAgents: protectedProcedure.query(({ ctx }) => {
-    return prisma.agents.findMany({
-      where: {
-        id: ctx.session.user.id,
-      },
-    });
-  }),
-  getUserAgents: protectedProcedure.query(({ ctx }) => {
-    return ctx.prisma.agents.findMany({
-          where: {
-        OR: [
-          {
-            OR: [
-           {userId: ctx.session.user.id}
-            ]
-          },
-          {
-            OR: [
-             {userId:'clfspjtrl0000ld086bf6h44e'}
-            ]
-          }
-        ]
-        ,
-      },
-    });
-  }),
+
 
   getFlashCards: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.flashCards.findMany({
