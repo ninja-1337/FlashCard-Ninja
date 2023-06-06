@@ -32,11 +32,20 @@
     ],
     "share_target":{
         "action":"/share-target/",
-        "method":"GET",
+        "enctype":"multipart/form-data",
+        "method":"POST",
         "params":{
             "title":"share",
-            "text":"share",
-            "url":"share"
+            "text":"text",
+            "url":"share",
+            "files":[
+{
+"name":"media[]",
+"accept":["audio/*","image/*","video/*"]
+
+}
+
+            ]
         }
 
     }
