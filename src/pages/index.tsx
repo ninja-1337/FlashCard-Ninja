@@ -108,11 +108,11 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
 			<div className="genre-filter-wrapper">
          <button onClick={() => {
 							filterGroup("");
-						}}  className="filter bg-gradient-to-r from-yellow-300 to-red-400 p-2 m-1 rounded-md"> Reset Filters</button>
+						}}  className="filter bg-gradient-to-r font-medium from-slate-500 to-sky-500 p-2 m-1 rounded-md"> Reset Filters</button>
 				{uniqueGroups.map((group) => (
 					<button key={group} onClick={() => {
 							filterGroup(group);
-						}}  className="filter bg-gradient-to-r from-yellow-300 to-red-400 p-2 m-1 rounded-md">{group}</button>
+						}}  className="filter bg-gradient-to-r font-medium from-slate-500 to-sky-500 p-2 m-1 rounded-md">{group}</button>
 				))}
 			</div>
 		) : (

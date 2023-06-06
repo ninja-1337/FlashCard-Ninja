@@ -53,13 +53,17 @@ function NavBar() {
   return (
     <Navbar  css={{
       $$navbarBackgroundColor: "transparent",
-      $$navbarBlurBackgroundColor: "transparent"
-    }} className="">
+      $$navbarBlurBackgroundColor: "transparent",
+      
+      paddingLeft:"0",
+    }} className="pl-0">
     
       <Navbar.Toggle
         ref={navbarToggleRef}
         onChange={(isSelected: boolean) => setIsSideMenuOpen(isSelected)}
-        showIn="xs"
+        showIn="sm"
+        className="pl-0 w-1/6 min-h-full"
+        
       />
       <Navbar.Brand
         css={{
@@ -157,9 +161,15 @@ function NavBar() {
                 </Dropdown.Trigger>
               )}
               {!session?.user?.image && (
-                <Dropdown.Button>
-                  <p className="text-l">Login</p>
-                </Dropdown.Button>
+                <>
+                   <Dropdown.Trigger>
+             
+                   <button className="text-l bg-gradient-to-r font-medium from-slate-600 to-sky-600 p-2 rounded-lg">
+                  <p className="text-base font-medium ">Login</p>
+                </button>
+                   </Dropdown.Trigger>
+           </>
+                
               )}
             </>
           </Navbar.Item>
