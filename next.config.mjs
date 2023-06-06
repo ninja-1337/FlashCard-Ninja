@@ -4,7 +4,7 @@
  * This is especially useful for Docker builds.
  */
 !process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
-const withPWA = import('next-pwa')({
+const withPWA = await import('next-pwa')({
   dest: 'public',
   register: true,
   skipWaiting: true,
