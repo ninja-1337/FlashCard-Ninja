@@ -137,7 +137,7 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
       {paralavi.Type=='NaN' || <span  className="ml-0 p-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60 m-1">FlashCard Type:{" "+paralavi.Type+" "} </span> } {paralavi.Group=='NaN' || <span  className="ml-0 text-green-700 p-1 m-1 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60">Group:{" "+paralavi.Group+" "} </span> }
       </>
       </a>
-      {editMode ? <button onClick={()=>{deleteArrival(paralavi.id)}}  className="rounded-lg bg-red-500  mt-0 p-1 z-0">Delete</button>:<></>}
+      {editMode ? <button onClick={()=>{deleteArrival(paralavi.id.toString())}}  className="rounded-lg bg-red-500  mt-0 p-1 z-0">Delete</button>:<></>}
 
     </div>
      
