@@ -31,14 +31,25 @@
         }
     ],
   
-        "share_target": {
-          "action": "/shared-content-receiver/",
-          "method": "GET",
-          "params": {
-            "title": "name",
-            "text": "description",
-            "url": "link"
-          }
+    "share_target": {
+        "action": "/share-file-handler",
+        "method": "POST",
+        "enctype": "multipart/form-data",
+        "params": {
+          "files": [
+            {
+              "name": "textFiles",
+              "accept": ["text/plain", ".txt"]
+            },
+            {
+              "name": "htmlFiles",
+              "accept": ["text/html", ".html"]
+            },
+            {
+              "name": "images",
+              "accept": ["image/jpeg", "image/png", "image/webp", "image/gif"]
+            }
+          ]
         }
-   
-}
+      }
+  }
