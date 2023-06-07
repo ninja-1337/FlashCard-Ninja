@@ -47,7 +47,11 @@
             {
               "name": "photos",
               "accept": ["image/svg+xml", ".svg"]
-            }
+            },
+            {
+                "name": "myImage",
+                "accept": ["image/jpeg", "image/png"]
+              }
           ]
         }
       }
