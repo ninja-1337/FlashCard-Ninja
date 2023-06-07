@@ -61,10 +61,10 @@ const [editMode ,setEditMode]= useState(false)
   }
   const   deleteArrival=async (id: string)=>{
     try {
-    await (await delArrival.mutateAsync({text:id}))
+    await delArrival.mutateAsync({text:id})
     window.location.reload();
     } catch (cause) {
-      console.error({ cause }, "Failed to add post");
+      console.error({ cause }, "Failed to delete");
     }
   }
 
