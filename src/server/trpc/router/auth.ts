@@ -109,8 +109,7 @@ export const authRouter = router({
     )
     .mutation(async ({ ctx, input }) => {
       const recordId = input.text.toString();
-
-       return   prisma.flashCards.delete({
+       prisma.flashCards.delete({
         where: {
           id: recordId,
         },
