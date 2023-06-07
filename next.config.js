@@ -7,6 +7,7 @@ const isDev = process.env.NODE_ENV !== "production";
 const withPWA = require("next-pwa")({
 
     dest: "public",
+    importScripts: ['/worker.js'],
     register:true,
   dest:"public",
     disable: isDev,
