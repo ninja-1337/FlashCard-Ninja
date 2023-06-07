@@ -32,7 +32,7 @@
     ],
   
         "share_target": {
-          "action": "/",
+          "action": "/shared-content-receiver/",
           "method": "GET",
           "params": {
             "title": "name",
