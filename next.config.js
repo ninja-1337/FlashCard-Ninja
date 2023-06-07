@@ -7,7 +7,8 @@ const isDev = process.env.NODE_ENV !== "production";
 const withPWA = require("next-pwa")({
 
     dest: "public",
-
+    register:true,
+  dest:"public",
     disable: isDev,
 
     buildExcludes: ["app-build-manifest.json"],
