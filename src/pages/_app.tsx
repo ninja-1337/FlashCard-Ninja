@@ -7,7 +7,7 @@ import Layout from "../components/layout";
 import { createTheme, NextUIProvider } from "@nextui-org/react"
 import "../styles/globals.css";
 import 'react-toastify/dist/ReactToastify.css';
-import {handleSubscription} from './../../public/worker'
+
 import React, {  useEffect } from 'react';
 
 
@@ -32,12 +32,6 @@ const MyApp: AppType<{ session: Session | null }> = ({
   pageProps: { session, ...pageProps },
 }) => {
 
-  useEffect(()=>{
-
-    handleSubscription()
-
- 
-},[]);
 
   return (
     <SessionProvider session={session}>
