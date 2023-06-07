@@ -46,12 +46,9 @@
             },
             {
               "name": "photos",
-              "accept": ["image/svg+xml", ".svg"]
-            },
-            {
-                "name": "myImage",
-                "accept": ["image/jpeg", "image/png"]
-              }
+              "accept": ["image/svg+xml", ".svg","image/jpg", "image/png"]
+            }
+        
           ]
         }
       }
