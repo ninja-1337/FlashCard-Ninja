@@ -93,7 +93,7 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
 
 
 
-onClick={()=>{}}
+onClick={()=>{console.log("Hello")}}
 >
 
 <Action
