@@ -90,39 +90,41 @@ function getUniqueAttributeValues(objects: any, attribute: string): any[] {
     <>
       <Head>
         <title>FlashCard-Ninja</title>
-        <meta name="description" content="Verbal Agent" />
+        <meta name="description" content="FlashCard Ninja" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b">
+      <main className=" align-middle justify-center min-h-screen items-center justify-center bg-gradient-to-b">
    
-        
-      <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
+      <div className="items-center justify-center flex">
+      <h1 className="text-5xl font-extrabold tracking-tight  sm:text-[5rem]">
            <span className="text-[hsl(280,100%,70%)]"> Manual </span>View
           </h1>
+          </div>
           <div>
-          <>
+          <div className="overflow-auto align-middle lg:flex items-center justify-center">
           
               
 		{uniqueGroups.length > 0 ? (
-			<div className="genre-filter-wrapper">
+			<div className=" max-w-screen  inline-flex   overflow-x-hidden items-center justify-center ">
          <button onClick={() => {
 							filterGroup("");
-						}} className={currentTheme=="dark" ? "filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md"} > Reset Filters</button>
+						}} className={currentTheme=="dark" ? "  filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md min-w-fit"} > Reset Filters</button>
 				{uniqueGroups.map((group) => (
 					<button key={group} onClick={() => {
 							filterGroup(group);
-						}}  className={currentTheme=="dark" ? "filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md"}>{group}</button>
+						}}  className={currentTheme=="dark" ? "filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md  min-w-fit"}>{group}</button>
 				))}
 			</div>
 		) : (
 			<p className="message">No Filters</p>
 		)}
-        </>
+        </div>
+      
           {paralaves && filtered?.map((paralavi) => {
   return (
-   
-    
-    <div key={paralavi.id} className="border border-gray-500 rounded-xl m-4 p-3">
+    <div key={paralavi.id} className="flex align-middle justify-center">
+    <div className="flex align-middle justify-center max-w-3xl">
+    <div  key={paralavi.id} className="border border-gray-500 rounded-xl m-4 p-3 w-full max-w-3xl  flex align-middle justify-center">
     <a href={`/flashcardView/${paralavi.id.toString()}`} >
         <> <div>FlashCard Name : {paralavi.Name}</div>
         {/* <div >Created At : {paralavi.CreatedAt.toDateString()}<> </>{paralavi.CreatedAt.toLocaleTimeString()}{paralavi.Name=='NaN' && <span className="ml-1  text-red-700 min-w-fit max-w-fit rounded-lg bg-red-600">🗡️</span> } {paralavi.Name=='NaN' || <span  className="ml-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-600">🗡️</span> } </div>
@@ -132,14 +134,16 @@ function getUniqueAttributeValues(objects: any, attribute: string): any[] {
       </>
       </a>
       {editMode ? <button onClick={()=>{deleteArrival(paralavi.id)}}  className="rounded-lg bg-red-500  mt-0 p-1 z-0">Delete</button>:<></>}
-   
+      </div>
     </div>
  
-
+ </div>
      
  
   );
 })}
+      
+
   
 
 
