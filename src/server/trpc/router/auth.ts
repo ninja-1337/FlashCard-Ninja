@@ -31,19 +31,35 @@ export const authRouter = router({
 
 
   getFlashCards: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.flashCards.findMany({
+    try {
+      return ctx.prisma.flashCards.findMany({
 
-    });
+      });
+    } catch (error) {
+      console.error("getFlashCards "+error);
+      // Expected output: ReferenceError: nonExistentFunction is not defined
+      // (Note: the exact output may be browser-dependent)
+    }
+    
+ 
   }),
 
   getFlashCardById: publicProcedure
   .input(z.object({ text: z.string() }))
   .query(({ ctx,input}) => {
+    try {
+         
     return ctx.prisma.flashCards.findUnique({
       where: {
         id:input?.text
       },
     });
+    } catch (error) {
+      console.error("getFlashCardById "+error);
+      // Expected output: ReferenceError: nonExistentFunction is not defined
+      // (Note: the exact output may be browser-dependent)
+    }
+
   }),
   getUserMessages: protectedProcedure
   .input(z.object({ text: z.string().nullish() }).nullish())
@@ -90,16 +106,24 @@ export const authRouter = router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-       return  await prisma.flashCards.create({
-      data:{Name:"Name Here",
-      Description:"Description Here",
-      Answer:"Answer Here",
-      frequency:"NaN",
-      Group:"NaN",
-      points:"NaN",
-      Type:"NaN",
+      try {
+     
+        return  await prisma.flashCards.create({
+          data:{Name:"Name Here",
+          Description:"Description Here",
+          Answer:"Answer Here",
+          frequency:"NaN",
+          Group:"NaN",
+          points:"NaN",
+          Type:"NaN",
+          }
+          });
+      } catch (error) {
+        console.error("New Flashcard Crash "+error);
+        // Expected output: ReferenceError: nonExistentFunction is not defined
+        // (Note: the exact output may be browser-dependent)
       }
-      });
+      
     }),
     DeleteFlashCard: publicProcedure
     .input(
@@ -109,12 +133,19 @@ export const authRouter = router({
     )
     .mutation(async ({ ctx, input }) => {
       const recordId = input.text.toString();
-
-       return  await prisma.flashCards.delete({
-        where: {
-          id: recordId,
-        },
-      });
+      try {
+        return  await prisma.flashCards.delete({
+          where: {
+            id: recordId,
+          },
+        });
+      } catch (error) {
+        console.error("delete flashcard "+error);
+        // Expected output: ReferenceError: nonExistentFunction is not defined
+        // (Note: the exact output may be browser-dependent)
+      }
+      
+       
     }),
    
     updateFlashCard: publicProcedure
