@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import { Switch, Spacer } from "@nextui-org/react";
 import { useTheme as useNextTheme } from 'next-themes'
 import { Fab, Action } from 'react-tiny-fab';
-import 'react-tiny-fab/dist/styles.css';
+
 const Home: NextPage = () => {
 const [editMode ,setEditMode]= useState(false)
   const router = useRouter();
@@ -87,27 +87,10 @@ function getUniqueAttributeValues(objects: any, attribute: string): any[] {
 }
 const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
 
+
   return (
     <>
-    <Fab
-
-
-
-
->
-
-<Action
-  text="Email"
-  onClick={()=>{console.log("Hello")}}
-/>
-<Action
-    text="Help"
-    onClick={()=>{console.log("Hello")}}
-  >
  
-</Action>
-
-</Fab>
       <Head>
         <title>B-Inventory</title>
         <meta name="description" content="Verbal Agent" />
