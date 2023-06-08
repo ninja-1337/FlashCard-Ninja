@@ -93,7 +93,7 @@ function getUniqueAttributeValues(objects: any, attribute: string): any[] {
         <meta name="description" content="FlashCard Ninja" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className=" align-middle justify-center min-h-screen items-center justify-center bg-gradient-to-b">
+      <main className=" align-middle justify-center min-h-screen items-center bg-gradient-to-b">
    
       <div className="items-center justify-center flex">
       <h1 className="text-5xl font-extrabold tracking-tight  sm:text-[5rem]">
@@ -108,18 +108,18 @@ function getUniqueAttributeValues(objects: any, attribute: string): any[] {
 			<div className=" max-w-screen  inline-flex   overflow-x-hidden items-center justify-center ">
          <button onClick={() => {
 							filterGroup("");
-						}} className={currentTheme=="dark" ? "  filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md min-w-fit"} > Reset Filters</button>
+						}} className={currentTheme=="dark" ? " min-w-fit  filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md "} > Reset Filters</button>
 				{uniqueGroups.map((group) => (
 					<button key={group} onClick={() => {
 							filterGroup(group);
-						}}  className={currentTheme=="dark" ? "filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md  min-w-fit"}>{group}</button>
+						}}  className={currentTheme=="dark" ? " min-w-fit  filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md  "}>{group}</button>
 				))}
 			</div>
 		) : (
 			<p className="message">No Filters</p>
 		)}
         </div>
-      
+        <div className="h-80vh overflow-auto pt-3">
           {paralaves && filtered?.map((paralavi) => {
   return (
     <div key={paralavi.id} className="flex align-middle justify-center">
@@ -142,7 +142,7 @@ function getUniqueAttributeValues(objects: any, attribute: string): any[] {
  
   );
 })}
-      
+       </div>
 
   
 

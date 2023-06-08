@@ -93,43 +93,50 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
         <meta name="description" content="Verbal Agent" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b">
+      <main className=" min-h-screen  items-center justify-center bg-gradient-to-b">
    
-        
+      <div className="items-center justify-center flex">
       <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
            <span className="text-[hsl(280,100%,70%)]"> FlashCard</span>Ninja
-          </h1><span className="pt-2"><span className="pt-0">Enable Editing</span>
+          </h1>
+          </div>
+          <div className="items-center justify-center flex">
+          <span className="pt-2"><span className="pt-0">Enable Editing</span>
           <span>
           <Switch  className="pt-2" size="xs" onChange={()=>{
           
                setEditMode(!editMode)
             
           }} preventDefault={false} checked={editMode} ></Switch></span></span>
-          <>
+          </div>
+      <div className="overflow-auto align-middle lg:flex items-center justify-center">
           
-		{uniqueGroups.length > 0 ? (
-			<div className="genre-filter-wrapper">
-         <button onClick={() => {
-							filterGroup("");
-						}} className={currentTheme=="dark" ? "filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md"} > Reset Filters</button>
-				{uniqueGroups.map((group) => (
-					<button key={group} onClick={() => {
-							filterGroup(group);
-						}}  className={currentTheme=="dark" ? "filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md"}>{group}</button>
-				))}
-			</div>
-		) : (
-			<p className="message">No Filters</p>
-		)}
-	</>
+              
+          {uniqueGroups.length > 0 ? (
+            <div className=" max-w-screen  inline-flex   overflow-x-hidden items-center justify-center ">
+               <button onClick={() => {
+                    filterGroup("");
+                  }} className={currentTheme=="dark" ? " min-w-fit inline-flex   filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md min-w-fit"} > Reset Filters</button>
+              {uniqueGroups.map((group) => (
+                <button key={group} onClick={() => {
+                    filterGroup(group);
+                  }}  className={currentTheme=="dark" ? " min-w-fit inline-flex  filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md  min-w-fit"}>{group}</button>
+              ))}
+            </div>
+          ) : (
+            <p className="message">No Filters</p>
+          )}
+              </div>
       
           <div>
-          {filtered && filtered?.map((paralavi) => {
+          <div className="h-60vh overflow-auto pt-2">
+          {paralaves && filtered?.map((paralavi) => {
   return (
-   
-    
-    <div key={paralavi.id} className="border border-gray-500 rounded-xl m-4 p-3">
-    <a href={`/flashcard/${paralavi.id.toString()}`} >
+  
+    <div key={paralavi.id} className="flex align-middle justify-center overflow-y-hidden">
+    <div className="flex align-middle justify-center max-w-3xl  overflow-y-auto">
+    <div  key={paralavi.id} className="border border-gray-500 rounded-xl m-4 p-3 w-full max-w-3xl  flex align-middle justify-center">
+    <a href={`/flashcardView/${paralavi.id.toString()}`} >
         <> <div>FlashCard Name : {paralavi.Name}</div>
         {/* <div >Created At : {paralavi.CreatedAt.toDateString()}<> </>{paralavi.CreatedAt.toLocaleTimeString()}{paralavi.Name=='NaN' && <span className="ml-1  text-red-700 min-w-fit max-w-fit rounded-lg bg-red-600">🗡️</span> } {paralavi.Name=='NaN' || <span  className="ml-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-600">🗡️</span> } </div>
       */}
@@ -137,23 +144,25 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
       {paralavi.Type=='NaN' || <span  className="ml-0 p-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60 m-1">FlashCard Type:{" "+paralavi.Type+" "} </span> } {paralavi.Group=='NaN' || <span  className="ml-0 text-green-700 p-1 m-1 min-w-fit max-w-fit rounded-lg bg-green-200 opacity-60">Group:{" "+paralavi.Group+" "} </span> }
       </>
       </a>
-      {editMode ? <button onClick={()=>{deleteArrival(paralavi.id.toString())}}  className="rounded-lg bg-red-500  mt-0 p-1 z-0">Delete</button>:<></>}
-
+      {editMode ? <button onClick={()=>{deleteArrival(paralavi.id)}}  className="rounded-lg bg-red-500  mt-0 p-1 z-0">Delete</button>:<></>}
+      </div>
     </div>
-     
+ 
+ </div>
+
  
   );
 })}
-  
+       </div>
 
 
 
-    </div>
-         
+    </div >
+         <div className="items-center justify-center flex pt-4">
             <button onClick={hadnleArrival} className="rounded-full bg-orange-400 p-6  text-white">
             +  New FlashCard
             </button>
-       
+            </div>
       </main>
     </>
   );
