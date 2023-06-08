@@ -50,8 +50,8 @@ const [editMode ,setEditMode]= useState(false)
   }, ); 
   const   hadnleArrival=async ()=>{
     try {
-    const id=await (await NewArrival.mutateAsync({text:""})).id
-    router.push('/flashcard/'+id); 
+    const flashcard=await  NewArrival.mutateAsync({text:""})
+    router.push('/flashcard/'+flashcard?.id); 
     } catch (cause) {
       console.error({ cause }, "Failed to add post");
     }

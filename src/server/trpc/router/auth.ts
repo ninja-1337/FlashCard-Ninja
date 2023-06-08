@@ -106,9 +106,10 @@ export const authRouter = router({
       })
     )
     .mutation(async ({ ctx, input }) => {
+      let id;
       try {
      
-        return  await prisma.flashCards.create({
+        id=  await prisma.flashCards.create({
           data:{Name:"Name Here",
           Description:"Description Here",
           Answer:"Answer Here",
@@ -123,7 +124,7 @@ export const authRouter = router({
         // Expected output: ReferenceError: nonExistentFunction is not defined
         // (Note: the exact output may be browser-dependent)
       }
-      
+      return id;
     }),
     DeleteFlashCard: publicProcedure
     .input(
