@@ -109,19 +109,23 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
             
           }} preventDefault={false} checked={editMode} ></Switch></span></span>
           </div>
-      <div className="overflow-auto align-middle lg:flex items-center justify-center">
+
+
+          <div className="overflow-auto  align-middle lg:flex items-center justify-center">
           
               
           {uniqueGroups.length > 0 ? (
-            <div className=" max-w-screen  inline-flex   overflow-x-hidden items-center justify-center ">
+            <div className="   inline-flex   overflow-x-hidden items-center justify-center ">
+              <span className="w-14"></span>
                <button onClick={() => {
                     filterGroup("");
-                  }} className={currentTheme=="dark" ? " min-w-fit inline-flex   filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md min-w-fit"} > Reset Filters</button>
+                  }} className={currentTheme=="dark" ? " min-w-fit  filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"min-w-fit filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md "} > Reset Filters</button>
               {uniqueGroups.map((group) => (
                 <button key={group} onClick={() => {
                     filterGroup(group);
-                  }}  className={currentTheme=="dark" ? " min-w-fit inline-flex  filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":"filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md  min-w-fit"}>{group}</button>
+                  }}  className={currentTheme=="dark" ? " min-w-fit  filter bg-gradient-to-r font-medium from-slate-500 to-sky-600 p-2 m-1 rounded-md":" min-w-fit filter bg-gradient-to-r font-medium from-slate-300 to-sky-400 p-2 m-1 rounded-md  "}>{group}</button>
               ))}
+               <span className="w-14"></span>
             </div>
           ) : (
             <p className="message">No Filters</p>
@@ -129,7 +133,7 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
               </div>
       
           <div>
-          <div className="h-60vh overflow-auto pt-2">
+          <div className="h-55vh overflow-auto pt-2">
           {paralaves && filtered?.map((paralavi) => {
   return (
   
