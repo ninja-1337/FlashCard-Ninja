@@ -91,18 +91,18 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
     <>
     <Fab
 
-text="Hello"
+
 
 onClick={()=>{}}
 >
 
 <Action
   text="Email"
-  onClick={()=>{}}
+  onClick={()=>{console.log("Hello")}}
 />
 <Action
     text="Help"
-    onClick={()=>{}}
+    onClick={()=>{console.log("Hello")}}
   >
  
 </Action>
