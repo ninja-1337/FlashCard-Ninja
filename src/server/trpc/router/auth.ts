@@ -31,8 +31,9 @@ export const authRouter = router({
 
 
   getFlashCards: publicProcedure.query(({ ctx }) => {
+    let flashcards;
     try {
-      return ctx.prisma.flashCards.findMany({
+      flashcards =ctx.prisma.flashCards.findMany({
 
       });
     } catch (error) {
@@ -40,6 +41,7 @@ export const authRouter = router({
       // Expected output: ReferenceError: nonExistentFunction is not defined
       // (Note: the exact output may be browser-dependent)
     }
+    return flashcards;
     
  
   }),

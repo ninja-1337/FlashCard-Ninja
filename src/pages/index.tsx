@@ -8,7 +8,8 @@ import React, { useState, ChangeEvent, FormEvent, useEffect  } from 'react';
 import { useRouter } from 'next/router';
 import { Switch, Spacer } from "@nextui-org/react";
 import { useTheme as useNextTheme } from 'next-themes'
-
+import { Fab, Action } from 'react-tiny-fab';
+import 'react-tiny-fab/dist/styles.css';
 const Home: NextPage = () => {
 const [editMode ,setEditMode]= useState(false)
   const router = useRouter();
@@ -88,6 +89,25 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
 
   return (
     <>
+    <Fab
+
+text="Hello"
+
+onClick={()=>{}}
+>
+
+<Action
+  text="Email"
+  onClick={()=>{}}
+/>
+<Action
+    text="Help"
+    onClick={()=>{}}
+  >
+ 
+</Action>
+
+</Fab>
       <Head>
         <title>B-Inventory</title>
         <meta name="description" content="Verbal Agent" />

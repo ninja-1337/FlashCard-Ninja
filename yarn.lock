@@ -4958,6 +4958,11 @@ react-modal-hover@^1.1.13:
   resolved "https://registry.yarnpkg.com/react-modal-hover/-/react-modal-hover-1.1.13.tgz#784c6cc2f0adfbf217da4c5c09676baa81ae3c21"
   integrity sha512-WmpCIL3xg52rOS+gEnp2M7BZwRiI1IPKg9aPKmnbFJnYliWge9qPPO+RIVmk1tOQYi7YGWXFulWWck99384U0Q==
 
+react-native-social-fab@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-social-fab/-/react-native-social-fab-1.0.2.tgz#2871a04daa4655ac2d6c8dcab2a3eabecf40afeb"
+  integrity sha512-zlvWEkBEkQpiBaneykqLRprvA3JMruFe7M8V+BvIvvEs4eRPii6uk5TPHP18Uolie7+VY4Nn7dVL31uOo+V/DQ==
+
 react-select@^5.7.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-5.7.0.tgz#82921b38f1fcf1471a0b62304da01f2896cd8ce6"
@@ -4984,6 +4989,11 @@ react-ssr-prepass@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/react-ssr-prepass/-/react-ssr-prepass-1.5.0.tgz#bc4ca7fcb52365e6aea11cc254a3d1bdcbd030c5"
   integrity sha512-yFNHrlVEReVYKsLI5lF05tZoHveA5pGzjFbFJY/3pOqqjGOmMmqx83N4hIjN2n6E1AOa+eQEUxs3CgRnPmT0RQ==
+
+react-tiny-fab@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/react-tiny-fab/-/react-tiny-fab-4.0.4.tgz#0b293b403893a6a4fe689493818d498f277d62bb"
+  integrity sha512-PxT6gEnIQR2vFfeIaa1Oq4PRX+cIEDbEfbS6PyevWCQngrKfqjMKPEcZOaaURaUclB9u3RilgjkaBUQFVlbWcg==
 
 react-toastify@^9.1.2:
   version "9.1.2"
