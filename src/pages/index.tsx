@@ -8,7 +8,8 @@ import React, { useState, ChangeEvent, FormEvent, useEffect  } from 'react';
 import { useRouter } from 'next/router';
 import { Switch, Spacer } from "@nextui-org/react";
 import { useTheme as useNextTheme } from 'next-themes'
-import { Fab, Action } from 'react-tiny-fab';
+import { Fab, Action } from './../components/Fab';
+import styles from './styles.module.scss';
 
 const Home: NextPage = () => {
 const [editMode ,setEditMode]= useState(false)
@@ -104,15 +105,35 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
           </h1>
           </div>
           <div className="items-center justify-center flex">
-          <span className="pt-2"><span className="pt-0">Enable Editing</span>
+          {/* <span className="pt-2"><span className="pt-0">Enable Editing</span>
           <span>
           <Switch  className="pt-2" size="xs" onChange={()=>{
           
                setEditMode(!editMode)
             
-          }} preventDefault={false} checked={editMode} ></Switch></span></span>
+          }} preventDefault={false} checked={editMode} ></Switch></span></span> */}
           </div>
 
+          <Fab
+icon={<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <g id="Complete"> <g data-name="add" id="add-2"> <g> <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="19" y2="5"></line> <line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12"></line> </g> </g> </g> </g></svg>}
+  alwaysShowTitle={true}
+ 
+>
+
+  <Action
+    text="New-FlashCard"
+    onClick={()=>{hadnleArrival()}}
+  />
+  <Action
+    text="Edit Mode"
+    onClick={(e)=>{setEditMode(!editMode)
+  
+  }}
+
+  />
+    <i className="fa fa-help" />
+
+</Fab>
 
           <div className="overflow-auto  align-middle lg:flex items-center justify-center">
           
@@ -136,14 +157,14 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
               </div>
       
           <div>
-          <div className="h-55vh overflow-auto pt-2">
+          <div className="h-70vh overflow-auto pt-2">
           {paralaves && filtered?.map((paralavi) => {
   return (
   
     <div key={paralavi.id} className="flex align-middle justify-center overflow-y-hidden">
     <div className="flex align-middle justify-center max-w-3xl  overflow-y-auto">
     <div  key={paralavi.id} className="border border-gray-500 rounded-xl m-4 p-3 w-full max-w-3xl  flex align-middle justify-center">
-    <a href={`/flashcardView/${paralavi.id.toString()}`} >
+    <a href={editMode ?  "/flashcard/"+paralavi.id.toString():"/flashcardView/"+paralavi.id.toString()}  >
         <> <div>FlashCard Name : {paralavi.Name}</div>
         {/* <div >Created At : {paralavi.CreatedAt.toDateString()}<> </>{paralavi.CreatedAt.toLocaleTimeString()}{paralavi.Name=='NaN' && <span className="ml-1  text-red-700 min-w-fit max-w-fit rounded-lg bg-red-600">🗡️</span> } {paralavi.Name=='NaN' || <span  className="ml-1 text-green-700 min-w-fit max-w-fit rounded-lg bg-green-600">🗡️</span> } </div>
       */}
@@ -166,9 +187,9 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
 
     </div >
          <div className="items-center justify-center flex pt-4">
-            <button onClick={hadnleArrival} className="rounded-full bg-orange-400 p-6  text-white">
+            {/* <button onClick={hadnleArrival} className="rounded-full bg-orange-400 p-6  text-white">
             +  New FlashCard
-            </button>
+            </button> */}
             </div>
       </main>
     </>
