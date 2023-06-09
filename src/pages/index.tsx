@@ -97,7 +97,7 @@ const uniqueGroups = getUniqueAttributeValues(paralaves, 'Group');
         <meta name="description" content="Verbal Agent" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className=" min-h-screen  items-center justify-center bg-gradient-to-b">
+      <main className=" min-h-screen  items-center  bg-gradient-to-b">
    
       <div className="items-center justify-center flex">
       <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
