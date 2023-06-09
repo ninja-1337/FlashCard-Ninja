@@ -186,11 +186,11 @@ icon={<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"
 
 
     </div >
-         <div className="items-center justify-center flex pt-4">
-            {/* <button onClick={hadnleArrival} className="rounded-full bg-orange-400 p-6  text-white">
+         {/* <div className="items-center justify-center flex pt-4">
+            <button onClick={hadnleArrival} className="rounded-full bg-orange-400 p-6  text-white">
             +  New FlashCard
-            </button> */}
-            </div>
+            </button>
+            </div> */}
       </main>
     </>
   );
