@@ -84,14 +84,10 @@ function NavBar() {
         hideIn="xs"
         variant="highlight"
       >
-       <Link color="inherit" href="/">
-       <Text b color="inherit" hideIn="xs">
-       Create
-          </Text> 
-        </Link>
+       
         <Spacer />
         <Spacer />
-        <Link color="inherit" href="/view">
+        <Link color="inherit" href="/">
        <Text b color="inherit" hideIn="xs">
        View
           </Text> 
@@ -251,14 +247,10 @@ function NavBar() {
        
       </Navbar.Content>
       <Navbar.Collapse  color="white" disableAnimation>
-      <Navbar.CollapseItem key="About" color="white" activeColor="warning">
-      <Link color="inherit" href="/" onClick={() => HandleSideMenu()}>
-            Create
-          </Link>
-        </Navbar.CollapseItem>
+
  
         <Navbar.CollapseItem key="view" activeColor="warning">
-        <Link color="inherit" href="/view" onClick={() => HandleSideMenu()}>
+        <Link color="inherit" href="/" onClick={() => HandleSideMenu()}>
             View
           </Link>
         </Navbar.CollapseItem>
