@@ -139,7 +139,7 @@ icon={<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"
           
               
           {uniqueGroups.length > 0 ? (
-            <div className="   inline-flex    items-center  ">
+            <div className="   inline-flex  align-middle  w-full  items-center  ">
               <span className="w-14"></span>
                <button onClick={() => {
                     filterGroup("");
