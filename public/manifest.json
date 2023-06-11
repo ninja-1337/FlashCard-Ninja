@@ -32,7 +32,7 @@
     ],
   
     "share_target": {
-        "action": "/file-collector",
+        "action": "/api/file-collector",
         "method": "POST",
         "enctype": "multipart/form-data",
         "params": {
