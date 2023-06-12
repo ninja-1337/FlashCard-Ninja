@@ -42,6 +42,7 @@ const filecollector = async (req : NextApiRequest, res : NextApiResponse) => {
     console.log(files)
     console.log(fields)
     inputFields = fields;
+    res.status(200).json({ fields, files })
   });
   res.status(200).json(inputFields);
 };
