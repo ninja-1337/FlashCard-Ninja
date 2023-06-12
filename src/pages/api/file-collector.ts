@@ -16,6 +16,7 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
   let data = req.body;
   let names;
   let url;
+  let resp;
   if (req.method === "PUT") {
     data="Put: "+data
   }
@@ -23,12 +24,13 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
     data="GET: "+data
   }
   if (req.method === "POST") {
-    data="Post: "+data
+  
    names=data.title
    url=data.url
+   resp="Post: "+data
   }
 
-  res.status(200).json(names+url);
+  res.status(200).json(names+url+"AFter"+resp);
 };
 
 export default filecollector;
