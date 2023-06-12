@@ -23,7 +23,7 @@ const filecollector = async (req : NextRequest, res : NextApiResponse) => {
 
   }
   if (req.method === "POST") {
-  console.log(req.body)
+  console.log(req)
 
    resp="Post: "+data
   }
