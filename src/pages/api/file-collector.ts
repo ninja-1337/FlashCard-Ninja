@@ -7,10 +7,17 @@ export const config = {
     },
   },
 }
+type Payload = {
+  title: string,
+          text: string,
+          url: string,
+}
+const filecollector = async (req: Request, res: NextApiResponse) => {
+  const data = await req.json();
+  
 
-const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
   const { searchParams } = new URL("Params: "+req.url?.toString()+"")
-  res.status(200).json(searchParams+req.body);
+  res.status(200).json(data);
 };
 
 export default filecollector;
