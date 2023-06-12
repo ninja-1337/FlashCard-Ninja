@@ -12,39 +12,20 @@ export const config = {
 }
 
 const filecollector = async (req : NextApiRequest, res : NextApiResponse) => {
-  // let data = req.body;
-  // let names;
-  // let url;
-  // let resp;
-  // if (req.method === "PUT") {
-  //   data="Put: "+data
-  // }
-  // if (req.method === "GET") {
-  //   data="GET: "+data
-  // }
-  // if (req.method === "POST") {
-  // console.log(req.body)
-  //  names=data.title
-  //  url=data.url
-  //  resp="Post: "+data
-  // }
-  
+  const promise = new Promise((resolve, reject) => {
 
-  const form = formidable({ multiples: true });
-
-  let inputFields = {};
+    const form = new formidable.IncomingForm();
   
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-    
-      return;
-    }
-    console.log(files)
-    console.log(fields)
-    inputFields = fields;
-    res.status(200).json({ fields, files })
-  });
-  res.status(200).json(inputFields);
+    form.parse(req, (err, fields, files) => {
+      if (err) reject(err);
+      resolve({fields, files});
+    })
+  
+   })
+  
+   return promise.then(({fields, files}:any) => {
+      res.status(200).json({ fields, files })
+   })
 };
 
 export default filecollector;
