@@ -13,7 +13,7 @@ export const config = {
 }
 
 const filecollector = async (req : NextRequest, res : NextApiResponse) => {
-  const data = await req.formData();
+  const data = await req;
   let resp;
   if (req.method === "PUT") {
   
