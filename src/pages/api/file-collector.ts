@@ -1,11 +1,9 @@
 import { type NextApiRequest, type NextApiResponse } from "next";
 export const config = {
   api: {
-    bodyParser: {
-      responseLimit: '18mb',
-      sizeLimit: '15mb',
-      
-    },
+   api: {
+    bodyParser: false
+  }
   },
 }
 type Payload = {
@@ -30,7 +28,7 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
    url=data.url
    resp="Post: "+data
   }
-resp=  req.body.formData()
+resp=  req.body
 
   res.status(200).json(req.body+"AFter"+resp);
 };
