@@ -34,7 +34,7 @@
     "share_target": {
         "action": "/api/file-collector",
         "method": "POST",
-        "enctype": "multipart/form-data",
+        "enctype": "application/json",
         "params": {
           "title": "name",
           "text": "description",
