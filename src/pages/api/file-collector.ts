@@ -30,7 +30,7 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
    resp="Post: "+data
   }
 
-  res.status(200).json(names+url+"AFter"+resp);
+  res.status(200).json(data.data+"AFter"+resp);
 };
 
 export default filecollector;
