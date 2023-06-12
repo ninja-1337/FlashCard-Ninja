@@ -25,12 +25,12 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
     data="GET: "+data
   }
   if (req.method === "POST") {
-  
+  console.log(req.body)
    names=data.title
    url=data.url
    resp="Post: "+data
   }
-resp=  req.body.data
+resp=  req.body.fields
 
   res.status(200).json(req.body+"AFter"+resp);
 };
