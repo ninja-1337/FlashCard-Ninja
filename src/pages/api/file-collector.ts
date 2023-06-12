@@ -4,6 +4,7 @@ export const config = {
     bodyParser: {
       responseLimit: '18mb',
       sizeLimit: '15mb',
+      
     },
   },
 }
@@ -29,7 +30,7 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
    url=data.url
    resp="Post: "+data
   }
-resp=  await JSON.parse(req.body)
+resp=  req.body.params
 
   res.status(200).json(req.body+"AFter"+resp);
 };
