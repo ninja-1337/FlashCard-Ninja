@@ -34,7 +34,7 @@ const filecollector = async (req : NextApiRequest, res : NextApiResponse) => {
 
   let inputFields = {};
   
-  form.parse(req.body, (err, fields, files) => {
+  form.parse(req, (err, fields, files) => {
     if (err) {
     
       return;
