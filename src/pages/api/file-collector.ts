@@ -31,8 +31,6 @@ const filecollector = async (req : NextApiRequest, res : NextApiResponse) => {
 const form = new Form();
 
 const x= form.parse(req, (err, fields, files) => {
-  res.writeHead(200, { 'content-type': 'text/plain' });
-  res.write('received upload:\n\n');
 
 });
 
