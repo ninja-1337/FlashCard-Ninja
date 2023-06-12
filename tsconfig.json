@@ -31,11 +31,14 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
+    "./src/pages/api/*.js",
     "./src/pages/_document.js",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+  
   ],
   "exclude": [
     "node_modules",
-    "./src/pages/_document.js"
+    "./src/pages/_document.js",
+    "./src/pages/api/*.js"
   ]
 }

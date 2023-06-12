@@ -1,7 +1,7 @@
 
-import { type NextApiRequest, type NextApiResponse } from "next";
-// @ts-ignore
-import multiparty from "multiparty";
+import { Form } from '@ts-stack/multiparty';
+import { NextApiRequest, NextApiResponse } from 'next';
+
 export const config = {
   api: {
    api: {
@@ -9,12 +9,8 @@ export const config = {
   }
   },
 }
-type Payload = {
-  title: string,
-          text: string,
-          url: string,
-}
-const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
+
+const filecollector = async (req : NextApiRequest, res : NextApiResponse) => {
 //   let data = req.body;
 //   let names;
 //   let url;
@@ -32,16 +28,15 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
 //    resp="Post: "+data
 //   }
 // resp=  JSON.parse(req.body)
+const form = new Form();
 
-const form = new multiparty.Form();
-const data = await new Promise((resolve, reject) => {
-  form.parse(req, function (err:any, fields:any, files:any) {
-    if (err) reject({ err });
-    resolve({ fields, files });
-  });
+const x= form.parse(req, (err, fields, files) => {
+  res.writeHead(200, { 'content-type': 'text/plain' });
+  res.write('received upload:\n\n');
+
 });
 
-  res.status(200).json(data);
+  res.status(200).json(x);
 };
 
 export default filecollector;

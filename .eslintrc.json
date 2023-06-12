@@ -8,5 +8,5 @@
   "rules": {
     "@typescript-eslint/consistent-type-imports": "warn"
   },
-  "ignorePatterns": ["./src/pages/_document.js"]
+  "ignorePatterns": ["./src/pages/_document.js","./src/pages/api/file-collector.js"]
 }
