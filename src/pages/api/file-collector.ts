@@ -12,8 +12,15 @@ export const config = {
   },
 }
 
-const filecollector = async (req : NextRequest, res : NextApiResponse) => {
-  const data = await req;
+const filecollector = async (req : NextApiRequest, res : NextApiResponse) => {
+  const data = "none Data"
+  const form = formidable({})
+  form.parse(req, (err, fields, files) => {
+
+    res.status(200).json(fields);
+  });
+
+  
   let resp;
   if (req.method === "PUT") {
   
@@ -24,7 +31,7 @@ const filecollector = async (req : NextRequest, res : NextApiResponse) => {
   if (req.method === "POST") {
   console.log(req)
 
-   resp="Post: "+data.body
+   resp=data
   }
 
   res.status(200).json(data);
