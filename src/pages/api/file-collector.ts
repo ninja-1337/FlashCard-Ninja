@@ -15,6 +15,7 @@ type Payload = {
 const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
   let data = req.body;
   let names;
+  let url;
   if (req.method === "PUT") {
     data="Put: "+data
   }
@@ -24,9 +25,10 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     data="Post: "+data
    names=data.title
+   url=data.url
   }
 
-  res.status(200).json(names);
+  res.status(200).json(names+url);
 };
 
 export default filecollector;
