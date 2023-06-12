@@ -1,5 +1,6 @@
 
 import formidable from 'formidable';
+import { NextRequest, NextResponse } from "next/server";
 
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -11,7 +12,7 @@ export const config = {
   },
 }
 
-const filecollector = async (req : NextApiRequest, res : NextApiResponse) => {
+const filecollector = async (req : NextRequest, res : NextApiResponse) => {
   // let data = req.body;
   // let names;
   // let url;
@@ -28,23 +29,9 @@ const filecollector = async (req : NextApiRequest, res : NextApiResponse) => {
   //  url=data.url
   //  resp="Post: "+data
   // }
-  
 
-  const form = formidable({ multiples: true });
-
-  let inputFields = {};
-  
-  form.parse(req, (err, fields, files) => {
-    if (err) {
-    
-      return;
-    }
-    console.log(files)
-    console.log(fields)
-    inputFields = fields;
-    res.status(200).json({ fields, files })
-  });
-  res.status(200).json(inputFields);
+  const data = await req.formData();
+  res.status(200).json(data);
 };
 
 export default filecollector;
