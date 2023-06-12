@@ -29,8 +29,9 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
    url=data.url
    resp="Post: "+data
   }
+resp=  await JSON.parse(req.body)
 
-  res.status(200).json(data.data+"AFter"+resp);
+  res.status(200).json(req.body+"AFter"+resp);
 };
 
 export default filecollector;
