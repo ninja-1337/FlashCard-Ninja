@@ -13,8 +13,16 @@ type Payload = {
           url: string,
 }
 const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
-  const data = JSON.parse(req.body);
-  
+  let data = req.body;
+  if (req.method === "PUT") {
+    data="Put: "+data
+  }
+  if (req.method === "GET") {
+    data="GET: "+data
+  }
+  if (req.method === "POST") {
+    data="Post: "+data
+  }
 
   const { searchParams } = new URL("Params: "+req.url?.toString()+"")
   res.status(200).json(data);
