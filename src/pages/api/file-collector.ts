@@ -1,4 +1,6 @@
+
 import { type NextApiRequest, type NextApiResponse } from "next";
+// @ts-ignore
 import multiparty from "multiparty";
 export const config = {
   api: {
