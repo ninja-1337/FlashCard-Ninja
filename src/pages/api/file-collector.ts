@@ -30,7 +30,7 @@ const filecollector = async (req: NextApiRequest, res: NextApiResponse) => {
    url=data.url
    resp="Post: "+data
   }
-resp=  req.body.params
+resp=  req.body.data
 
   res.status(200).json(req.body+"AFter"+resp);
 };
